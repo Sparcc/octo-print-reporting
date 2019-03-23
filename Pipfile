@@ -4,9 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
 requests = "*"
+gspread = "*"
+oauth2client = "*"
+pyopenssl = "*"
 
 [requires]
 python_version = "3.5"

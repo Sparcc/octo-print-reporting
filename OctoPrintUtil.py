@@ -34,6 +34,7 @@ def _buildFileLogs(files):
 		'Last Print Time',
 		'Estimated Print Time'
 	]
+
 	report.append(rowDataHeadings)
 	
 	for file in files:
@@ -70,15 +71,10 @@ def _buildFileLogs(files):
 		rowData.append(_formatTime(timeData))
 		
 		report.append(rowData)
-		
-		
-	print(report)
-	#return reports
 
-google_client_id = open('google-client-id','r').read()
-google_client_secret = open('google-client-secret','r').read()
+	return report
 
-def getDataFromOctoPrint():
+def getOctoPrint_PrintLogs():
 	#connect
 	hostName = 'http://192.168.1.4'
 	endPoint = '/api/files'#get file information
@@ -101,7 +97,7 @@ def getDataFromOctoPrint():
 	response = json.loads(r.text)
 	
 	#reports = _buildFileLogs(response['files'])
-	_buildFileLogs(response['files'])
+	return _buildFileLogs(response['files'])
 	
 
 '''
