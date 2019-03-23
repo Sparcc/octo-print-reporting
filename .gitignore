@@ -112,3 +112,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+google-client-id
+google-client-secret
+octoprint-api-key
+
+!google-client-id(blank)
+!google-client-secret(blank)
+!octoprint-api-key(blank)
+.vscode/settings.json
