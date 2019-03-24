@@ -19,7 +19,7 @@ def _formatTime(timeData):
 	return '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
 	
 def _formatDimensions(d,h,w):
-	return "{0} x {1} x {2}".format(d,h,w)
+	return "{0} x {1} x {2}".format(round(d,2),round(h,2),round(w,2))
 
 def _buildFileLogs(files):
 	report = []
@@ -54,18 +54,33 @@ def _buildFileLogs(files):
 		if 'prints' in file:
 			if 'failure' in file['prints']:
 				rowData.append(file['prints']['failure'])
+			else:
+				rowData.append("---")
 				
 			if 'success' in file['prints']:
 				rowData.append(file['prints']['success'])
+			else:
+				rowData.append("---")
+		else:
+			rowData.append("---")
+			rowData.append("---")
+		
 				
 		if 'statistics' in file:
 			if 'ender3' in file['statistics']['averagePrintTime']:
 				timeData = file['statistics']['averagePrintTime']['ender3']
 				rowData.append(_formatTime(timeData))
-			
+			else:
+				rowData.append("---")
 			if 'ender3' in file['statistics']['lastPrintTime']:
 				timeData = file['statistics']['lastPrintTime']['ender3']
 				rowData.append(_formatTime(timeData))
+			else:
+				rowData.append("---")
+		else:
+				rowData.append("---")
+				rowData.append("---")
+
 		
 		timeData = file['gcodeAnalysis']['estimatedPrintTime']
 		rowData.append(_formatTime(timeData))
