@@ -5,13 +5,17 @@ import datetime
 import math
 
 def _convert_size(size_bytes):
+	'''
    if size_bytes == 0:
        return "0B"
    size_name = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
    i = int(math.floor(math.log(size_bytes, 1024)))
    p = math.pow(1024, i)
    s = round(size_bytes / p, 2)
-   return "%s %s" % (s, size_name[i])
+   '''
+	s = math.ceil(size_bytes / 1024)
+	return s
+	#return "%s %s" % (s, size_name[i])
 
 def _formatTime(timeData):
 	hours, remainder = divmod(timeData, 3600)
@@ -26,7 +30,7 @@ def _buildFileLogs(files):
 	rowDataHeadings = [
 		'File Name',
 		'Date',
-		'File Size',
+		'File Size (mega bytes)',
 		'Dimensions',
 		'Failed Prints',
 		'Successful Prints',
