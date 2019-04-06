@@ -113,14 +113,17 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#Octoprint API Key
+# Octoprint API Key
 octoprint-api-key
 !octoprint-api-key(blank)
 
 .vscode/settings.json
 
-#Google API OAUTH2 Credentials
+# Google API OAUTH2 Credentials
 OctoprintReporting-GoogleAPI-credentials.json
 !OctoprintReporting-GoogleAPI-credentials(blank).json
 google-client-id(blank)
 google-client-secret(blank)
+
+# Should be fine building on the destination
+Pipfile.lock
