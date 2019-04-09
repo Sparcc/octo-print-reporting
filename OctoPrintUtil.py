@@ -51,8 +51,11 @@ def _buildFileLogs(files):
 		
 		rowData.append(_convert_size(file['size']))
 		
-		dimension = file['gcodeAnalysis']['dimensions']
-		dimensions = _formatDimensions(dimension['depth'],dimension['height'],dimension['width'])
+		if 'gcodeAnalysis' in file:
+			if 'dimensions' in file['gcodeAnalysis']:
+				dimension = file['gcodeAnalysis']['dimensions']
+				dimensions = _formatDimensions(dimension['depth'],dimension['height'],dimension['width'])
+				
 		rowData.append(dimensions)
 		
 		if 'prints' in file:
@@ -85,9 +88,10 @@ def _buildFileLogs(files):
 				rowData.append("---")
 				rowData.append("---")
 
-		
-		timeData = file['gcodeAnalysis']['estimatedPrintTime']
-		rowData.append(_formatTime(timeData))
+		if 'gcodeAnalysis' in file:
+			if 'estimatedPrintTime' in file['gcodeAnalysis']:
+				timeData = file['gcodeAnalysis']['estimatedPrintTime']
+				rowData.append(_formatTime(timeData))
 		
 		report.append(rowData)
 
