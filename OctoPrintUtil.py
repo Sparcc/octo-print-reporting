@@ -99,7 +99,7 @@ def _buildFileLogs(files):
 
 def getOctoPrint_PrintLogs():
 	#connect
-	hostName = 'http://192.168.1.4'
+	hostName = 'http://192.168.0.4'
 	endPoint = '/api/files'#get file information
 	#endPoint = '/api/files/local/please_dear_god.gcode'#get file information
 	url = hostName + endPoint
